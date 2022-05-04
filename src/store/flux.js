@@ -38,6 +38,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				query = userQuery;
 				setStore({ q: [query] });
 			},
+
 			addPagination: pageInput => {
 				let store = getStore();
 				let page = store.page;

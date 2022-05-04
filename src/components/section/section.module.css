@@ -1,0 +1,7 @@
+.main_container {
+   background-color: #FFF;
+   position:absolute;
+   width: 100%;
+   height: 30vh;
+   /* margin-top: 70vh; */
+}

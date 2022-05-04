@@ -1,0 +1,20 @@
+.container {
+   display: flex;
+   width: 100%;
+   height: 2%;
+   border-radius: 20px;
+   border: 1px solid #2F2F2F;
+   padding: 7px;
+   align-items: center;
+   justify-content: space-around;
+}
+
+.container p {
+   display: contents;
+   align-self: auto;
+}
+
+.icon {
+   color:#EFC000;
+   margin-right: 2px;
+}

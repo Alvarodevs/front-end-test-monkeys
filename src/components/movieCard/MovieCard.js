@@ -25,6 +25,7 @@ const MovieCard = props => {
 		history.push("/watch_list");
 	};
 
+	//Date conversion
 	const date = new Date(props.release_date);
 	const options = { day: 'numeric', month: 'short', year: 'numeric' };
 	

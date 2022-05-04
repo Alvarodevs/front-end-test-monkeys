@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Header } from "./components/header/Header";
 import { MoviesCatalog } from "./components/moviesCatalog/MoviesCatalog";
 import { MovieSingle } from "./components/MovieSingle";
-import { WatchList } from "./components/WatchList";
+import { WatchList } from "./components/watchlist/WatchList";
 import injectContext from "./store/appContext";
 
 const Layout = () => {

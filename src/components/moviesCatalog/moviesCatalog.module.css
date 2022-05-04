@@ -1,3 +1,30 @@
+.movies_catalog_header{
+   display: flex;
+   justify-content: space-between;
+   margin: auto 3rem;
+}
+
+.catalog_header_container {
+   width: 60%;
+}
+.movies_catalog_header p, h2 {
+   color: #fff;
+   width: 70%;
+}
+
+.catalog_header_text{
+   font-size: 13px;
+   width: 100%;
+}
+
+.buttons_container {
+   display: flex;
+   align-items: flex-end;
+   width: 12rem;
+   justify-content: space-between;
+   margin-bottom: 1rem;
+}
+
 .movies_container{
    display: flex;
    flex-wrap: wrap;
@@ -11,4 +38,9 @@
 
 .movies_container a{
    text-decoration: none;
+}
+
+.page_navigation_btn {
+   display: flex;
+   max-width: 20%
 }

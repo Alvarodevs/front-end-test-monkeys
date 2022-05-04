@@ -1,8 +1,9 @@
 import React, { useRef, useContext, useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
+import watchListStyles from "./watchlist.module.css"
 import { Link } from "react-router-dom";
-import { Context } from "../store/appContext.js";
-import MovieCard from "./movieCard/MovieCard.js";
+import { Context } from "../../store/appContext.js";
+import MovieCard from "../movieCard/MovieCard.js";
 
 export const WatchList = () => {
 	const { store, actions } = useContext(Context);
@@ -18,14 +19,14 @@ export const WatchList = () => {
 
 	useEffect(() => {
 		setWatchListNumber(store.watchListMovies.length);
-	}, [idMovie]);
+	}, []);
 
 	return (
 		<>
 			<Button className="button-exit-watchlist" ref={myRef}>
-				<Link to="/">Back Homepage</Link>
+				<Link to="/" onClick={window.location.reload()}>Back Homepage</Link>
 			</Button>
-			<div className="movies-container">{watchListMovies}</div>
+			<div className={watchListStyles.movies_container}>{watchListMovies}</div>
 		</>
 	);
 };

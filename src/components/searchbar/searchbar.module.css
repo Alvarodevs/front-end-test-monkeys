@@ -49,3 +49,7 @@
    outline: none;
 }
 
+.magnify_glass:hover{
+  cursor: pointer;
+  color: #EFC000;
+}

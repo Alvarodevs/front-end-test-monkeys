@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../../store/appContext.js";
 import searchbarStyles from "./searchbar.module.css"
@@ -11,22 +12,27 @@ export const SearchBar = prop => {
 	const { store, actions } = useContext(Context);
 	const [input, setInput] = useState("");
 	// const [watchListNumber, setWatchListNumber] = useState("");
-	// const history = useHistory();
-
+	const history = useHistory();
+	
 	const handleInput = e => {
 		setInput(e.target.value);
+		
+	};
+
+	const handleSubmit = e => {
+		actions.addQuery(input);
 		actions.addPagination(1);
-		actions.addQuery(e.target.value);
-		// {
-		// 	e.target.value !== ""
-		// 		? actions.getMovieFromQuery(e.target.value)
-		// 		: actions.addPagination("") & actions.getMovieList(1);
-		// }
+		{
+			input ? actions.getMovieFromQuery() : actions.addPagination("") & actions.getMovieList(1);
+		}
+		e.preventDefault();
 	};
 
 	// useEffect(() => {
-	// 	setInput("");
-	// }, [location.pathname === "/"]);
+	// 	if (!input) {
+	// 		history.push("/")
+	// 	}
+	// }, [store.q]);
 
 	return (
 		<div className={searchbarStyles.searchbar}>
@@ -43,7 +49,7 @@ export const SearchBar = prop => {
 				</Link>
 			{/* </div> */}
 			<div className={searchbarStyles.searchbar_content}>
-				<form className={searchbarStyles.searchbar_form}> 
+				<form className={searchbarStyles.searchbar_form} onSubmit={handleSubmit}> 
 					<input
 						type="text"
 						className={searchbarStyles.searchbar_input}
@@ -52,7 +58,7 @@ export const SearchBar = prop => {
 						onChange={handleInput}
 					/>
 				</form>
-				<FontAwesomeIcon icon={faMagnifyingGlass} color="#9F9F9F" size="1x" />
+				<FontAwesomeIcon icon={faMagnifyingGlass} className={searchbarStyles.magnify_glass} color="#9F9F9F" size="1x" onClick={handleSubmit}/>
 			</div>
 
 		</div>

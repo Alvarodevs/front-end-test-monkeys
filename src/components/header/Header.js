@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import headerStyles from "./header.module.css";
-import agile_monkey_logo from "../../assets/img/agile_monkey_logo.png"
+import linkedin_logo from "../../assets/img/linkedin_logo.jpg"
 import { Navbar } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { SearchBar } from "../../components/searchbar/SearchBar";
@@ -22,7 +22,7 @@ export const Header = () => {
 			<Link
 				to="/"
 				onClick={handleResetStore}>
-				<img src={agile_monkey_logo} alt="agile_monkeys" />
+				<img src={linkedin_logo} alt="agile_monkeys" />
 			</Link>
 
 			<SearchBar value={value} />
