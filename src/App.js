@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Header } from "./components/header/Header";
+import { MoviesCatalog } from "./components/moviesCatalog/MoviesCatalog";
+import { MovieSingle } from "./components/MovieSingle";
+import { WatchList } from "./components/WatchList";
+import injectContext from "./store/appContext";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
+const Layout = () => {
+	return (
+		<>
+			<div className="main-container text-center">
+				<div className="app-container">
+					<BrowserRouter>
+						<Header />
+						<Switch>
+							<Route exact path="/">
+								<MoviesCatalog />
+							</Route>
+							<Route
+								exact
+								path="/movie/:id"
+								component={MovieSingle}></Route>
+							<Route
+								exact
+								path="/watch_list"
+								component={WatchList}></Route>
+						</Switch>
+					</BrowserRouter>
+				</div>
+			</div>
+		</>
+	);
+};
+export default injectContext(Layout);

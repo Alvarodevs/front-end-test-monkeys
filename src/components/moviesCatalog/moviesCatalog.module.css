@@ -1,0 +1,14 @@
+.movies_container{
+   display: flex;
+   flex-wrap: wrap;
+   margin: auto;
+   overflow-x: hidden;
+   overflow-y: auto;
+   white-space: normal;
+   width: 100%;
+   justify-content: center;
+}
+
+.movies_container a{
+   text-decoration: none;
+}

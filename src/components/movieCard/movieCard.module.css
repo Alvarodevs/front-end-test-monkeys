@@ -1,0 +1,119 @@
+.movie{
+   width: 200px;
+   margin: 1.5rem;
+   overflow: hidden;
+   position: relative;
+}
+
+.movie img{
+   max-width: 100%;
+   height: 20rem;
+   border-radius: 10px;
+}
+
+.movie_info{
+   display:flex;
+   flex-direction: column;
+   justify-content:space-between;
+   height: 6rem;
+   align-items: flex-start;
+}
+
+.average_container{
+   color: #EFC000;
+   width: 2.5rem;
+   display: flex;
+   justify-content: space-between;
+}
+
+
+.movie_info p{
+   color: #fff;
+   font-size: 0.8rem;
+   margin-top: 0.2rem;
+}
+
+.movie_info span{
+   margin-bottom: auto;
+   padding-bottom: 3px;
+   margin-left: 0.1rem;
+}
+
+.overview{
+   position: absolute;
+   display: flex;
+   flex-direction: column;
+   background-color: #FFFFFF;
+   width: 200px;
+   color: #9F9F9F;
+   font-size: 0.8rem;
+   padding: 0.2rem;
+   bottom: 0;
+   left: 0;
+   right:0;
+   overflow: auto;
+   max-height: 100%;
+   border-radius: 10px 10px;
+   transform: translateX(100%);
+   transition: transform 0.5s 0.2s;
+}
+.fa-heart-card {
+   position: relative;
+   color: #2F2F2F;
+   margin-bottom: 1.5rem;
+   width: 100%;
+   font-size: 1rem;
+   opacity: 1;
+}
+
+.overview .fa_icon{
+   border-color: #EFC000;
+   margin: 0.2rem;
+}
+.overview .fa_icon:hover {
+   color: #EFC000;
+   border-color: none;
+}
+
+.movie:hover .overview{
+   transform: translateX(0%);
+}
+
+.movie-detail{
+   display: flex;
+   flex-direction: row;
+   height: 72vh;
+   width: 80%;
+   margin: auto;
+   margin-top: 1.5rem;
+   color: #fff;
+   justify-content: between;
+   border-radius: 10px;
+   /* box-shadow: 10px 10px 5px $secondary-color; */
+   /* p{
+      justify-content: center;
+      color:#fff;
+      font-size: 2rem;
+      height:fit-content;
+      padding: 0.2rem;
+   } */
+}
+
+.movie-detail-info{
+   justify-content: center;
+   width:100%;
+   overflow: auto;
+   background: rgba(0,0,0, 0.5);
+}
+.overview-detail{
+   justify-content: center;
+   font-size: 1.5rem;
+   color:#fff;
+   height:60%;
+   padding: 0.2rem;
+   align-items: center;
+}
+.production-info{
+   display:flex;
+   justify-content: space-around;
+}
