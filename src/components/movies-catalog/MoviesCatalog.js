@@ -1,15 +1,16 @@
 import React, { useEffect, useContext, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import moviesCatalogStyles from "./moviesCatalog.module.css"
+import moviesCatalogStyles from "./movies-catalog.module.css"
 import { Context } from "../../store/appContext.js";
 import { Button } from "../button/Button";
-import MovieCard from "../movieCard/MovieCard.js";
+import MovieCard from "../movie-card/MovieCard.js";
 import { Section } from "../section/Section";
 
 export const MoviesCatalog = () => {
 	const { store, actions } = useContext(Context);
 	const myRef = useRef(null);
 	let location = useLocation();
+	
 
 	//EFFECT WHAT TO RENDER IN HOME PAGE
 	useEffect(() => {

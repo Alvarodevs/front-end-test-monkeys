@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import watchListStyles from "./watchlist.module.css"
 import { Link } from "react-router-dom";
 import { Context } from "../../store/appContext.js";
-import MovieCard from "../movieCard/MovieCard.js";
+import MovieCard from "../movie-card/MovieCard.js";
 
 export const WatchList = () => {
 	const { store, actions } = useContext(Context);

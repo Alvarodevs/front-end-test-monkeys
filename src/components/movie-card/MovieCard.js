@@ -15,7 +15,8 @@ const MovieCard = props => {
 	const handleId = e => {
 		setIdMovie(props.id);
 	};
-
+	
+	
 	const handleAddToWatchList = e => {
 		actions.addMovieToWatchList(idMovie);
 	};

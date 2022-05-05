@@ -1,0 +1,25 @@
+.actor {
+   display:flex;
+   flex-direction: row;
+   max-height: 100%;
+   margin: 1rem;
+}
+ 
+.actor img {
+   width: 15%;
+   height: auto;
+   box-sizing: border-box;
+}
+
+.character_container {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   width: 60%;
+    margin-left: 1rem
+}
+.actor_name {
+   font-size: 1.8rem;
+   width: 40%;
+   box-sizing: border-box;
+}

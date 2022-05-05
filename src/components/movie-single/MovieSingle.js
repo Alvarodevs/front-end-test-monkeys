@@ -1,6 +1,7 @@
-import React, { useState, useContext, useEffect } from "react";
-import { Context } from "../store/appContext.js";
-import { Actor } from "./ActorCard";
+import React, { useContext, useEffect } from "react";
+import movieSingleStyles from "./movie-single.module.css"
+import { Context } from "../../store/appContext";
+import { ActorCard } from "../actor-card/ActorCard";
 import { Button } from "react-bootstrap";
 import { Link, useHistory,useLocation } from "react-router-dom";
 
@@ -10,21 +11,22 @@ export const MovieSingle = () => {
 	let location = useLocation();
 
 	const idParam = (location.pathname + location.search).substr(7);
+	console.log(location)
 
 	useEffect(() => {
 		actions.getMovieDetail(idParam);
 		actions.getCredits(idParam);
-	}, []);
+	}, [idParam]);
 
 	//SEARCHING FROM MOVIESINGLE NOT WORKING ALREADY
 	// useEffect(() => {
 	// 	{
 	// 		!store.moviesFromQuery ? history.push("/") : "";
 	// 	}
-	// }, [idParam]);
+	// }, []);
 
 	let cast = store.movieCredits.map((actor, index) => {
-		return <Actor key={index} actor={actor} />;
+		return <ActorCard key={index} actor={actor} />;
 	});
 
 	return (
@@ -32,8 +34,8 @@ export const MovieSingle = () => {
 			<Button className="button-exit-watchlist">
 				<Link to="/">Back Homepage</Link>
 			</Button>
-			<div className="movie-detail">
-				<img
+			<div className={movieSingleStyles.movie_detail}>
+				<img className={movieSingleStyles.poster_path}
 					src={
 						store.singleMovieDetails.poster_path
 							? store.IMG_API +
@@ -42,14 +44,14 @@ export const MovieSingle = () => {
 					}
 					alt={store.singleMovieDetails.title}
 				/>
-				<div className="movie-detail-info">
+				<div className={movieSingleStyles.movie_detail_info}>
 					<p>{store.singleMovieDetails.title} </p>
-					<div className="production-info">
+					<div className={movieSingleStyles.production_info}>
 						<p>{store.singleMovieDetails.runtime} min.</p>
 						<p>
 							{store.singleMovieDetails.budget
 								? "$ " + store.singleMovieDetails.budget
-								: " "}
+								: "No budget available"}
 						</p>
 						<p>Rate: {store.singleMovieDetails.vote_average}</p>
 					</div>

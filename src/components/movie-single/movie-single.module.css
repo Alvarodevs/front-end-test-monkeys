@@ -1,0 +1,42 @@
+.movie_detail{
+   display: flex;
+   flex-direction: row;
+   height: 60vh;
+   width: 80%;
+   margin: 1rem 8rem;
+   margin-bottom: 1rem;
+   color: #fff;
+   justify-content: between;
+   padding: 0.5rem 0;
+   /* box-shadow: 5px 5px 3px #2F2F2F; */
+}
+
+.poster_path {
+   min-width: 15rem;
+   min-height: 20rem;
+   margin-right: 10px;
+}
+
+.movie_detail p{
+   justify-content: center;
+   color:#fff;
+   font-size: 1rem;
+   height:fit-content;
+   padding: 0.2rem;
+}
+
+.movie_detail_info{
+   display: flex;
+   justify-content: space-evenly;
+   flex-wrap: wrap;
+   width:100%;
+   overflow: auto;
+   background: rgba(0,0,0, 0.5);
+}
+
+.production_info{
+   display:flex;
+   justify-content: space-around;
+    flex-wrap: wrap;
+    width: 80%;
+}

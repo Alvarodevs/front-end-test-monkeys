@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
-import { Context } from "../store/appContext.js";
+import { Context } from "../../store/appContext.js";
 import PropTypes from "prop-types";
+import actorCardStyles from "./actor-card.module.css"
 
-export const Actor = prop => {
+export const ActorCard = prop => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="actor">
+		<div className={actorCardStyles.actor}>
 			<img
 				src={
 					prop.actor.profile_path
@@ -15,10 +16,10 @@ export const Actor = prop => {
 				}
 				alt={prop.name}
 			/>
-			<div className="d-flex flex-row w-100 justify-content-between">
-				<span className="actor-name">{prop.actor.name}</span>
-				<span className="m-auto mx-2 align-items-center">as</span>
-				<span className="actor-character">
+			<div className={actorCardStyles.character_container}>
+				<span className={actorCardStyles.actor_name}>{prop.actor.name}</span>
+				<span> as </span>
+				<span className={actorCardStyles.actor_character}>
 					{prop.actor.character
 						? prop.actor.character
 						: prop.actor.name}
@@ -28,7 +29,7 @@ export const Actor = prop => {
 	);
 };
 
-Actor.propTypes = {
+ActorCard.propTypes = {
 	profile_path: PropTypes.string,
 	name: PropTypes.string,
 	character: PropTypes.string

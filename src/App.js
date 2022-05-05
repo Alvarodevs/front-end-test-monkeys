@@ -1,12 +1,13 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Header } from "./components/header/Header";
-import { MoviesCatalog } from "./components/moviesCatalog/MoviesCatalog";
-import { MovieSingle } from "./components/MovieSingle";
+import { MoviesCatalog } from "./components/movies-catalog/MoviesCatalog";
+import { MovieSingle } from "./components/movie-single/MovieSingle";
 import { WatchList } from "./components/watchlist/WatchList";
+import { Footer } from "./components/footer/Footer";
 import injectContext from "./store/appContext";
 
-const Layout = () => {
+const App = () => {
 	return (
 		<>
 			<div className="main-container text-center">
@@ -27,9 +28,10 @@ const Layout = () => {
 								component={WatchList}></Route>
 						</Switch>
 					</BrowserRouter>
+					<Footer/>
 				</div>
 			</div>
 		</>
 	);
 };
-export default injectContext(Layout);
+export default injectContext(App);
