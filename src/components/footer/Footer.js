@@ -9,9 +9,9 @@ export const Footer = () => {
 
          <img src={miniLogo} alt="logo"></img>
          <div className={footerStyles.links_container}>
-            <a href='https://www.theagilemonkeys.com/' target="_blank">About us</a>
-            <a href='https://www.theagilemonkeys.com/blog' target="_blank">Blog</a>
-            <a href='mailto:hello@theagilemonkeys.com' target="_blank">Contact us</a>
+            <a href='https://www.theagilemonkeys.com/' target="_blank" rel="noreferrer">About us</a>
+            <a href='https://www.theagilemonkeys.com/blog' target="_blank" rel="noreferrer">Blog</a>
+            <a href='mailto:hello@theagilemonkeys.com'>Contact us</a>
          </div>
       </div>
    )

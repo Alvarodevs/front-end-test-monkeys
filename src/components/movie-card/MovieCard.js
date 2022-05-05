@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import movieCardStyles from "./movieCard.module.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faTrash, faHeart } from "@fortawesome/free-solid-svg-icons";
@@ -15,8 +15,7 @@ const MovieCard = props => {
 	const handleId = e => {
 		setIdMovie(props.id);
 	};
-	
-	
+
 	const handleAddToWatchList = e => {
 		actions.addMovieToWatchList(idMovie);
 	};
@@ -29,23 +28,21 @@ const MovieCard = props => {
 	//Date conversion
 	const date = new Date(props.release_date);
 	const options = { day: 'numeric', month: 'short', year: 'numeric' };
-	
+
 	return (
 		<div className={movieCardStyles.movie} onMouseOver={handleId} value={idMovie}>
 			<Link to={"/movie/" + idMovie}>
-				<div>
-					<img
-						src={
-							props.poster_path
-								? store.IMG_API + props.poster_path
-								: "https://images.unsplash.com/photo-1512149177596-f817c7ef5d4c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=345&q=80"
-						}
-						alt={props.title}
-					/>
-				</div>
+				<img
+					src={
+						props.poster_path
+							? store.IMG_API + props.poster_path
+							: "https://images.unsplash.com/photo-1512149177596-f817c7ef5d4c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=345&q=80"
+					}
+					alt={props.title}
+				/>
 				<div className={movieCardStyles.movie_info}>
 					<div className={movieCardStyles.average_container}>
-						<FontAwesomeIcon icon={faStar}/>
+						<FontAwesomeIcon icon={faStar} />
 						<span>{props.vote_average}</span>
 					</div>
 					<p><strong>{props.title}</strong></p>

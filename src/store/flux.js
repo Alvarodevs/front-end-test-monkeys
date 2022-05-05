@@ -11,11 +11,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			movieCredits: [],
 			moviesFromQuery: [],
 			watchListMovies: []
+			
 		},
-
+			
 		//end of store
 
 		actions: {
+			
 			//MOVIE LIST HOME PAGE SORT BY POPULARITY
 			getMovieList: pageNumber => {
 				let store = getStore();
@@ -44,10 +46,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let page = store.page;
 				page = pageInput;
 				setStore({ page: [pageInput] });
-				// {
-				// 	page == [""] ? setStore({ page: page + 1 }) : "";
-				// }
+				
+				//setStore({ page: page + 1 })
 			},
+
 			getMovieFromQuery: () => {
 				let store = getStore();
 				let query = store.q;
@@ -64,6 +66,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			addMovieToWatchList: movieId => {
 				let store = getStore();
 				let watchListMovies = store.watchListMovies;
+				console.log(watchListMovies)
 				const urlMovieToWatchList = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${store.API_KEY}`;
 
 				fetch(urlMovieToWatchList)
@@ -80,14 +83,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ watchListMovies: newWatchList });
 			},
 
-			getMovieDetail: props => {
+			getMovieDetail: movieId => {
 				let store = getStore();
-				const urlSingleMovieDetails = `https://api.themoviedb.org/3/movie/${props}?api_key=${store.API_KEY}`;
+				const urlSingleMovieDetails = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${store.API_KEY}`;
 
 				fetch(urlSingleMovieDetails)
 					.then(resp => resp.json())
 					.then(data => setStore({ singleMovieDetails: data }));
 			},
+
 			getCredits: movieId => {
 				let store = getStore();
 				const urlFetchForCredits = `https://api.themoviedb.org/3//movie/${movieId}/credits?api_key=${store.API_KEY}`;

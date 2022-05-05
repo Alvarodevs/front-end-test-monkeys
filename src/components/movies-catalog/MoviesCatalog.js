@@ -1,48 +1,45 @@
 import React, { useEffect, useContext, useRef } from "react";
-import { useLocation } from "react-router-dom";
 import moviesCatalogStyles from "./movies-catalog.module.css"
 import { Context } from "../../store/appContext.js";
 import { Button } from "../button/Button";
 import MovieCard from "../movie-card/MovieCard.js";
-import { Section } from "../section/Section";
+//import { Section } from "../section/Section";
 
 export const MoviesCatalog = () => {
 	const { store, actions } = useContext(Context);
-	const myRef = useRef(null);
-	let location = useLocation();
-	
+	const myRef = useRef(null);	
 
 	//EFFECT WHAT TO RENDER IN HOME PAGE
 	useEffect(() => {
-		
 		store.q ? actions.getMovieFromQuery() : actions.getMovieList(1);
-		
-	}, []);
+	}, [!store.page]);
 
 	//SCROLL BACK TO TOP OF MOVIES
 	const scrollToTop = () => myRef.current.scrollIntoView();
 
 	//PAGINATION
-	const paginationForward = () => {
-		actions.addPagination(++store.page);
-		{
-			store.q !== ""
-				? actions.getMovieFromQuery()
-				: actions.getMovieList();
-		}
-		scrollToTop();
-	};
+	// const paginationForward = () => {
+	// 	actions.addPagination(++store.page);
+	// 	{
+	// 		store.q !== ""
+	// 			? actions.getMovieFromQuery()
+	// 			: actions.getMovieList();
+	// 	}
+	// 	scrollToTop();
+	// };
 
-	const paginationBackward = () => {
-		actions.addPagination(--store.page);
-		{
-			store.q !== ""
-				? actions.getMovieFromQuery()
-				: actions.getMovieList();
-		}
-		scrollToTop();
-	};
+	// const paginationBackward = () => {
+	// 	actions.addPagination(--store.page);
+	// 	{
+	// 		store.q !== ""
+	// 			? actions.getMovieFromQuery()
+	// 			: actions.getMovieList();
+	// 	}
+	// 	scrollToTop();
+	// };
 
+	
+	
 	//MOVIES CARDS ARRAYS (NOT QUERY & QUERY)
 	let movies =
 		store.movies.length > 0 &&
@@ -69,15 +66,15 @@ export const MoviesCatalog = () => {
 				</div>
 			</div>
 
-			{/* Section in the middle w white bg color 
-			<Section/>
-			*/}
+			{/* Section in the middle w white bg color  */}
+			{/* <Section/> */}
+			
 			
 			<div className={moviesCatalogStyles.movies_container} ref={myRef}>
 				{store.q === "" ? movies : moviesFromQuery}
 			</div>
 			
-			{/* <div>
+			<div className={moviesCatalogStyles.pagination_buttons_container}>
 				<div>
 					{store.page <= 1 ? (
 						""
@@ -85,8 +82,7 @@ export const MoviesCatalog = () => {
 						<Button
 							title="Previous page"
 							iconType="prev"
-							className={moviesCatalogStyles.page_navigation_btn}
-							onClick={() => paginationBackward()}>
+							>
 							
 						</Button>
 					)}
@@ -94,10 +90,9 @@ export const MoviesCatalog = () => {
 				<Button
 					title="Next page"
 					iconType="next"
-					className={moviesCatalogStyles.page_navigation_btn}
-					onClick={() => paginationForward()}>
+					>
 				</Button>
-			</div> */}
+			</div>
 		</div>
 	);
 };

@@ -23,6 +23,7 @@
    width: 12rem;
    justify-content: space-between;
    margin-bottom: 1rem;
+   margin-right: 1rem;
 }
 
 .movies_container{
@@ -40,7 +41,7 @@
    text-decoration: none;
 }
 
-.page_navigation_btn {
+.pagination_buttons_container {
    display: flex;
-   max-width: 20%
+   justify-content: center;
 }

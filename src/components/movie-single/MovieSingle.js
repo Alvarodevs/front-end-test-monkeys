@@ -1,29 +1,21 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import movieSingleStyles from "./movie-single.module.css"
 import { Context } from "../../store/appContext";
 import { ActorCard } from "../actor-card/ActorCard";
-import { Button } from "react-bootstrap";
-import { Link, useHistory,useLocation } from "react-router-dom";
+import { Button } from "../button/Button";
+import { Link, useLocation } from "react-router-dom";
 
 export const MovieSingle = () => {
 	const { store, actions } = useContext(Context);
-	const history = useHistory();
+	const [id, setId] = useState("")
 	let location = useLocation();
 
-	const idParam = (location.pathname + location.search).substr(7);
-	console.log(location)
 
 	useEffect(() => {
-		actions.getMovieDetail(idParam);
-		actions.getCredits(idParam);
-	}, [idParam]);
-
-	//SEARCHING FROM MOVIESINGLE NOT WORKING ALREADY
-	// useEffect(() => {
-	// 	{
-	// 		!store.moviesFromQuery ? history.push("/") : "";
-	// 	}
-	// }, []);
+		setId(location.pathname.substring(7));
+		actions.getMovieDetail(id);
+		actions.getCredits(id);
+	}, []);
 
 	let cast = store.movieCredits.map((actor, index) => {
 		return <ActorCard key={index} actor={actor} />;

@@ -4,19 +4,17 @@ import { Context } from "../../store/appContext.js";
 import searchbarStyles from "./searchbar.module.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import { Form, Badge } from "react-bootstrap";
+import { Badge } from "react-bootstrap";
 import Proptypes from "prop-types";
 import { useHistory, Link } from "react-router-dom";
 
 export const SearchBar = prop => {
 	const { store, actions } = useContext(Context);
 	const [input, setInput] = useState("");
-	// const [watchListNumber, setWatchListNumber] = useState("");
 	const history = useHistory();
-	
+
 	const handleInput = e => {
 		setInput(e.target.value);
-		
 	};
 
 	const handleSubmit = e => {
@@ -28,28 +26,25 @@ export const SearchBar = prop => {
 		e.preventDefault();
 	};
 
-	// useEffect(() => {
-	// 	if (!input) {
-	// 		history.push("/")
-	// 	}
-	// }, [store.q]);
+	useEffect(() => {
+		if (!input) {
+			history.push("/")
+		}
+	}, [store.q]);
 
 	return (
 		<div className={searchbarStyles.searchbar}>
-			{/* <div className="watchlist-container"> */}
-				<Link to="/watch_list">
-					<span className="watchlist-header">Watch List</span>
-					<FontAwesomeIcon icon={faHeart} size="2x" />
-
-					<Badge pill bg="primary" className="badge-heart">
-						{store.watchListMovies.length > 0
-							? store.watchListMovies.length
-							: ""}
-					</Badge>
-				</Link>
-			{/* </div> */}
+			<Link to="/watch_list" >
+				<span className="watchlist-header">Watch List</span>
+				<FontAwesomeIcon icon={faHeart} size="2x" />
+				<p className={searchbarStyles.badge_heart}>
+					{store.watchListMovies.length > 0
+						? store.watchListMovies.length
+						: ""}
+				</p>
+			</Link>
 			<div className={searchbarStyles.searchbar_content}>
-				<form className={searchbarStyles.searchbar_form} onSubmit={handleSubmit}> 
+				<form className={searchbarStyles.searchbar_form} onSubmit={handleSubmit}>
 					<input
 						type="text"
 						className={searchbarStyles.searchbar_input}
@@ -58,7 +53,8 @@ export const SearchBar = prop => {
 						onChange={handleInput}
 					/>
 				</form>
-				<FontAwesomeIcon icon={faMagnifyingGlass} className={searchbarStyles.magnify_glass} color="#9F9F9F" size="1x" onClick={handleSubmit}/>
+				<FontAwesomeIcon icon={faMagnifyingGlass} className={searchbarStyles.magnify_glass} size="1x" 
+				onClick={handleSubmit}/>
 			</div>
 
 		</div>

@@ -2,15 +2,20 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Functionality
 
-In the project directory, you can run:
+Getting a movies catalog with TMDB, with search bar (submitting and clicking), footer with links to Agile Monkeys site. 
 
+## First step
+Install npm packages: 
+### `npm install`
+
+## Second step   
+Just need to run this app
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Thanks for having a look at it!
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<a href="https://www.linkedin.com/in/alvarodevs4you/" target="_blank">Alvaro´s LinkedIn</a>
+
 
