@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import movieCardStyles from "./movieCard.module.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faTrash, faHeart } from "@fortawesome/free-solid-svg-icons";

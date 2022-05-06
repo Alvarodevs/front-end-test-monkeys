@@ -34,14 +34,17 @@ export const SearchBar = prop => {
 
 	return (
 		<div className={searchbarStyles.searchbar}>
-			<Link to="/watch_list" >
-				<span className="watchlist-header">Watch List</span>
-				<FontAwesomeIcon icon={faHeart} size="2x" />
-				<p className={searchbarStyles.badge_heart}>
-					{store.watchListMovies.length > 0
-						? store.watchListMovies.length
-						: ""}
-				</p>
+			<Link to="/watch_list" className={searchbarStyles.watchlist_container}>
+				<span className={searchbarStyles.watchlist_header}>Watch List</span>
+
+				<p className={searchbarStyles.watchlist_number}>
+						{store.watchListMovies.length > 0
+							? store.watchListMovies.length
+							: ""}
+					</p>
+				<FontAwesomeIcon icon={faHeart} size="2x" >
+					
+				</FontAwesomeIcon>
 			</Link>
 			<div className={searchbarStyles.searchbar_content}>
 				<form className={searchbarStyles.searchbar_form} onSubmit={handleSubmit}>

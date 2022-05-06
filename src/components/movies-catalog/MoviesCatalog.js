@@ -11,32 +11,37 @@ export const MoviesCatalog = () => {
 
 	//EFFECT WHAT TO RENDER IN HOME PAGE
 	useEffect(() => {
-		store.q ? actions.getMovieFromQuery() : actions.getMovieList(1);
-	}, [!store.page]);
+		if (store.q === "") {
+			actions.getMovieList(1)
+		} else actions.getMovieFromQuery();
+	}, []);
 
 	//SCROLL BACK TO TOP OF MOVIES
 	const scrollToTop = () => myRef.current.scrollIntoView();
 
 	//PAGINATION
-	// const paginationForward = () => {
-	// 	actions.addPagination(++store.page);
-	// 	{
-	// 		store.q !== ""
-	// 			? actions.getMovieFromQuery()
-	// 			: actions.getMovieList();
-	// 	}
-	// 	scrollToTop();
-	// };
+	const paginationForward = () => {
+		actions.addPagination(store.page+1);
+		if(store.q !== "") {
+			actions.getMovieFromQuery()
+		} else actions.getMovieList()
+		// {
+		// 	store.q !== ""
+		// 		? actions.getMovieFromQuery()
+		// 		: actions.getMovieList();
+		// }
+		scrollToTop();
+	};
 
-	// const paginationBackward = () => {
-	// 	actions.addPagination(--store.page);
-	// 	{
-	// 		store.q !== ""
-	// 			? actions.getMovieFromQuery()
-	// 			: actions.getMovieList();
-	// 	}
-	// 	scrollToTop();
-	// };
+	const paginationBackward = () => {
+		actions.addPagination(--store.page);
+		{
+			store.q !== ""
+				? actions.getMovieFromQuery()
+				: actions.getMovieList();
+		}
+		scrollToTop();
+	};
 
 	
 	
@@ -62,7 +67,7 @@ export const MoviesCatalog = () => {
 				</div>
 				<div className={moviesCatalogStyles.buttons_container}>
 					<Button title="Filter" iconType="faSliders"/>
-					<Button title="Order by" iconType="faSliders"/>
+					<Button title="Order by" iconType="faBarsSort"/>
 				</div>
 			</div>
 

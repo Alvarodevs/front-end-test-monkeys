@@ -10,12 +10,12 @@ export const MovieSingle = () => {
 	const [id, setId] = useState("")
 	let location = useLocation();
 
-
+	const idParam = location.pathname.substr(7);
 	useEffect(() => {
-		setId(location.pathname.substring(7));
-		actions.getMovieDetail(id);
-		actions.getCredits(id);
-	}, []);
+		//setId(location.pathname.substring(7));
+		actions.getMovieDetail(idParam);
+		actions.getCredits(idParam);
+	}, [idParam]);
 
 	let cast = store.movieCredits.map((actor, index) => {
 		return <ActorCard key={index} actor={actor} />;

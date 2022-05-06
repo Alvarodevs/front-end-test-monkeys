@@ -46,8 +46,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let page = store.page;
 				page = pageInput;
 				setStore({ page: [pageInput] });
-				
-				//setStore({ page: page + 1 })
+				// eslint-disable-next-line no-lone-blocks
+				{
+					// eslint-disable-next-line no-unused-expressions
+					page === [""] ? setStore({ page: page + 1 }) : "";
+				}
 			},
 
 			getMovieFromQuery: () => {
@@ -90,6 +93,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch(urlSingleMovieDetails)
 					.then(resp => resp.json())
 					.then(data => setStore({ singleMovieDetails: data }));
+					console.log(store.singleMovieDetails)
 			},
 
 			getCredits: movieId => {

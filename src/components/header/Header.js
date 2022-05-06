@@ -17,16 +17,24 @@ export const Header = () => {
 	};
 
 	return (
-		<Navbar bg="dark" className={headerStyles.navbar_container}>
+		<div>
+			<div className={headerStyles.upbar}>
+				<p className={headerStyles.upbar_text}>
+					Pellentesque pellentesque, mauris ut volutpat dapibus, lectus mauris!
+				</p>
+			</div>
+			
+			<Navbar bg="dark" className={headerStyles.navbar_container}>
 
-			<Link
-				to="/"
-				onClick={handleResetStore}>
-				<img src={linkedin_logo} alt="agile_monkeys" />
-			</Link>
+				<Link
+					to="/"
+					onClick={handleResetStore}>
+					<img src={linkedin_logo} alt="agile_monkeys" />
+				</Link>
 
-			<SearchBar value={value} />
+				<SearchBar value={value} />
 
-		</Navbar>
+			</Navbar>
+		</div>
 	);
 };

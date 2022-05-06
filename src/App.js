@@ -18,12 +18,14 @@ const App = () => {
 					</Route>
 					<Route
 						exact
-						path="/movie/:id"
-						component={MovieSingle}></Route>
+						path="/movie/:id">
+						<MovieSingle/>
+					</Route>
 					<Route
 						exact
-						path="/watch_list"
-						component={WatchList}></Route>
+						path="/watch_list">
+						<WatchList/>		
+					</Route>
 				</Switch>
 			</BrowserRouter>
 			<Footer />

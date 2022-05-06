@@ -9,7 +9,7 @@
 }
 .movies_catalog_header p, h2 {
    color: #fff;
-   width: 70%;
+   width: 85%;
 }
 
 .catalog_header_text{
@@ -20,7 +20,7 @@
 .buttons_container {
    display: flex;
    align-items: flex-end;
-   width: 12rem;
+   width: 13rem;
    justify-content: space-between;
    margin-bottom: 1rem;
    margin-right: 1rem;
@@ -44,4 +44,15 @@
 .pagination_buttons_container {
    display: flex;
    justify-content: center;
+   
+}
+
+@media (max-width: 650px) {
+   .buttons_container {
+      flex-wrap: wrap;
+      justify-content: end;
+      width: 8rem;
+      align-self: end;
+      height: 6rem;
+   }
 }
