@@ -3,57 +3,63 @@ import moviesCatalogStyles from "./movies-catalog.module.css"
 import { Context } from "../../store/appContext.js";
 import { Button } from "../button/Button";
 import MovieCard from "../movie-card/MovieCard.js";
-//import { Section } from "../section/Section";
+import { Section } from "../section/Section";
 
 export const MoviesCatalog = () => {
 	const { store, actions } = useContext(Context);
-	const myRef = useRef(null);	
+	const myRef = useRef(null);
 
 	//EFFECT WHAT TO RENDER IN HOME PAGE
 	useEffect(() => {
-		if (store.q === "") {
-			actions.getMovieList(1)
-		} else actions.getMovieFromQuery();
+		store.q !== "" ? actions.getMovieFromQuery() : actions.getMovieList(1);
 	}, []);
 
 	//SCROLL BACK TO TOP OF MOVIES
 	const scrollToTop = () => myRef.current.scrollIntoView();
 
-	//PAGINATION
-	const paginationForward = () => {
-		actions.addPagination(store.page+1);
-		if(store.q !== "") {
-			actions.getMovieFromQuery()
-		} else actions.getMovieList()
-		// {
-		// 	store.q !== ""
-		// 		? actions.getMovieFromQuery()
-		// 		: actions.getMovieList();
-		// }
-		scrollToTop();
-	};
+	//PAGINATION **** not finished
+	// const paginationForward = () => {
+	// 	actions.addPagination(++store.page);
+	// 	{
+	// 		store.q !== ""
+	// 			? actions.getMovieFromQuery()
+	// 			: actions.getMovieList();
+	// 	}
+	// 	scrollToTop();
+	// };
 
-	const paginationBackward = () => {
-		actions.addPagination(--store.page);
-		{
-			store.q !== ""
-				? actions.getMovieFromQuery()
-				: actions.getMovieList();
-		}
-		scrollToTop();
-	};
+	// const paginationBackward = () => {
+	// 	actions.addPagination(--store.page);
+	// 	{
+	// 		store.q !== ""
+	// 			? actions.getMovieFromQuery()
+	// 			: actions.getMovieList();
+	// 	}
+	// 	scrollToTop();
+	// };
 
-	
-	
+
 	//MOVIES CARDS ARRAYS (NOT QUERY & QUERY)
 	let movies =
 		store.movies.length > 0 &&
 		store.movies.map((movie, index) => (
-			<MovieCard key={index} {...movie} />
+			//Ternary displaying white section in middle
+			index !== store.movies.length / 2 ?
+				<MovieCard key={index} {...movie} /> :
+				<>
+					<Section/> <MovieCard key={index} {...movie} />
+				</>
 		));
 
 	let moviesFromQuery = store.moviesFromQuery.map(moviesArray =>
-		moviesArray.map((item, index) => <MovieCard key={index} {...item} />)
+		moviesArray.map((movie, index) =>
+			//Ternary displaying white section in middle
+			index !== store.movies.length / 2 ?
+				<MovieCard key={index} {...movie} /> :
+				<>
+					<Section /> <MovieCard key={index} {...movie} />
+				</>
+		)
 	);
 
 	return (
@@ -66,19 +72,15 @@ export const MoviesCatalog = () => {
 					</p>
 				</div>
 				<div className={moviesCatalogStyles.buttons_container}>
-					<Button title="Filter" iconType="faSliders"/>
-					<Button title="Order by" iconType="faBarsSort"/>
+					<Button title="Filter" iconType="faSliders" />
+					<Button title="Order by" iconType="faBarsSort" />
 				</div>
 			</div>
 
-			{/* Section in the middle w white bg color  */}
-			{/* <Section/> */}
-			
-			
 			<div className={moviesCatalogStyles.movies_container} ref={myRef}>
 				{store.q === "" ? movies : moviesFromQuery}
 			</div>
-			
+
 			<div className={moviesCatalogStyles.pagination_buttons_container}>
 				<div>
 					{store.page <= 1 ? (
@@ -87,15 +89,15 @@ export const MoviesCatalog = () => {
 						<Button
 							title="Previous page"
 							iconType="prev"
-							>
-							
+						>
+
 						</Button>
 					)}
 				</div>
 				<Button
 					title="Next page"
 					iconType="next"
-					>
+				>
 				</Button>
 			</div>
 		</div>

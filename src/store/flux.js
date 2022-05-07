@@ -21,7 +21,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//MOVIE LIST HOME PAGE SORT BY POPULARITY
 			getMovieList: pageNumber => {
 				let store = getStore();
-
+				
 				let url = `https://api.themoviedb.org/3/discover/movie?api_key=${
 					store.API_KEY
 				}&sort_by=popularity.desc&include_adult=false&include_video=false&page=${
@@ -32,6 +32,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(resp => resp.json())
 					.then(data => setStore({ movies: data.results }));
 				setStore({ q: "" });
+				//console.log(store.movies)
 			},
 
 			addQuery: userQuery => {
@@ -41,17 +42,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ q: [query] });
 			},
 
-			addPagination: pageInput => {
-				let store = getStore();
-				let page = store.page;
-				page = pageInput;
-				setStore({ page: [pageInput] });
-				// eslint-disable-next-line no-lone-blocks
-				{
-					// eslint-disable-next-line no-unused-expressions
-					page === [""] ? setStore({ page: page + 1 }) : "";
-				}
-			},
+			// addPagination: pageInput => {
+			// 	let store = getStore();
+			// 	let page = store.page;
+			// 	page = pageInput;
+			// 	setStore({ page: [pageInput] });
+			// 	// eslint-disable-next-line no-lone-blocks
+			// 	{
+			// 		// eslint-disable-next-line no-unused-expressions
+			// 		page === [""] ? setStore({ page: page + 1 }) : "";
+			// 	}
+			// },
 
 			getMovieFromQuery: () => {
 				let store = getStore();
@@ -81,7 +82,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let store = getStore();
 				let watchListMovies = store.watchListMovies;
 				let newWatchList = watchListMovies.filter(
-					movie => movie.id != movieId
+					movie => movie.id !== movieId
 				);
 				setStore({ watchListMovies: newWatchList });
 			},
@@ -93,7 +94,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch(urlSingleMovieDetails)
 					.then(resp => resp.json())
 					.then(data => setStore({ singleMovieDetails: data }));
-					console.log(store.singleMovieDetails)
 			},
 
 			getCredits: movieId => {

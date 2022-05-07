@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Header } from "./components/header/Header";
 import { MoviesCatalog } from "./components/movies-catalog/MoviesCatalog";
 import { MovieSingle } from "./components/movie-single/MovieSingle";
@@ -12,21 +12,20 @@ const App = () => {
 		<>
 			<BrowserRouter>
 				<Header />
-				<Switch>
-					<Route exact path="/">
-						<MoviesCatalog />
-					</Route>
+				<Routes>
+					<Route exact path="/" element={<MoviesCatalog />}/>
+						
 					<Route
 						exact
-						path="/movie/:id">
-						<MovieSingle/>
-					</Route>
+						path="/movie/:id"
+						element={<MovieSingle/>}/>
+						
 					<Route
 						exact
-						path="/watch_list">
-						<WatchList/>		
-					</Route>
-				</Switch>
+						path="/watch_list" 
+						element={<WatchList/>}/>
+						
+				</Routes>
 			</BrowserRouter>
 			<Footer />
 		</>

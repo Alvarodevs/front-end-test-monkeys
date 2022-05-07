@@ -3,13 +3,13 @@ import movieCardStyles from "./movieCard.module.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faTrash, faHeart } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
-import { Link, useHistory, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Context } from "../../store/appContext.js";
 
 const MovieCard = props => {
 	const { store, actions } = useContext(Context);
 	const [idMovie, setIdMovie] = useState("");
-	let history = useHistory();
+	let navigate = useNavigate();
 	let location = useLocation();
 
 	const handleId = e => {
@@ -22,7 +22,7 @@ const MovieCard = props => {
 
 	const handleDeleteMovie = e => {
 		actions.removeMovieFromWatchList(idMovie);
-		history.push("/watch_list");
+		navigate("/watch_list");
 	};
 
 	//Date conversion
@@ -31,7 +31,7 @@ const MovieCard = props => {
 
 	return (
 		<div className={movieCardStyles.movie} onMouseOver={handleId} value={idMovie}>
-			<Link to={"/movie/" + idMovie}>
+			<Link to={`${"/movie/" + idMovie}`}>
 				<img
 					src={
 						props.poster_path

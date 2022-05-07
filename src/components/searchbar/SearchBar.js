@@ -4,14 +4,13 @@ import { Context } from "../../store/appContext.js";
 import searchbarStyles from "./searchbar.module.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import { Badge } from "react-bootstrap";
 import Proptypes from "prop-types";
-import { useHistory, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export const SearchBar = prop => {
 	const { store, actions } = useContext(Context);
 	const [input, setInput] = useState("");
-	const history = useHistory();
+	const navigate = useNavigate();
 
 	const handleInput = e => {
 		setInput(e.target.value);
@@ -28,7 +27,7 @@ export const SearchBar = prop => {
 
 	useEffect(() => {
 		if (!input) {
-			history.push("/")
+			navigate("/")
 		}
 	}, [store.q]);
 

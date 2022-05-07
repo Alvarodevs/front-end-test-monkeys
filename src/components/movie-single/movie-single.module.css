@@ -8,7 +8,6 @@
    color: #fff;
    justify-content: between;
    padding: 0.5rem 0;
-   /* box-shadow: 5px 5px 3px #2F2F2F; */
 }
 
 .poster_path {
@@ -39,4 +38,9 @@
    justify-content: space-around;
     flex-wrap: wrap;
     width: 80%;
+}
+
+.back_home_btn {
+   width: 2rem;
+   margin-left: 4rem;
 }

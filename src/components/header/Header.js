@@ -2,18 +2,18 @@ import React, { useContext } from "react";
 import headerStyles from "./header.module.css";
 import linkedin_logo from "../../assets/img/linkedin_logo.jpg"
 import { Navbar } from "react-bootstrap";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SearchBar } from "../../components/searchbar/SearchBar";
 import { Context } from "../../store/appContext.js";
 
 export const Header = () => {
 	const { store, actions } = useContext(Context);
-	let history = useHistory();
+	let navigate = useNavigate();
 	const value = "";
 
 	const handleResetStore = () => {
 		actions.getMovieList(1);
-		history.push({ pathname: "/", state: store.movies });
+		navigate("/");
 	};
 
 	return (

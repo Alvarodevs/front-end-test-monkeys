@@ -3,7 +3,7 @@ import React from "react";
 import {createRoot} from 'react-dom/client';
 
 //include bootstrap npm library into the bundle
-import "bootstrap";
+//import "bootstrap";
 
 import "./styles/index.css";
 
