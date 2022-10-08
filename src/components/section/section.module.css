@@ -25,6 +25,13 @@
    display: flex;
    align-items: center;
    justify-content: center;
+   transition: all .6s;
+}
+
+.read_more_btn:hover{
+   background: #EFC000;
+   color: white;
+   
 }
 .img_container{
    min-width: 50%;
